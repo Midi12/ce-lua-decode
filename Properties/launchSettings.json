@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ce-lua-decode": {
+      "commandName": "Project",
+      "commandLineArgs": "-f ..\\..\\..\\sample.txt"
+    }
+  }
+}
