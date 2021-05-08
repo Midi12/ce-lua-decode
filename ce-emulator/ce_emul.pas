@@ -144,7 +144,9 @@ begin
   getmem(b, size);
   size:=Base85ToBin(pchar(s), b);
 
-
+   fs:=TFileStream.Create('compressed.bin', fmCreate);
+  fs.Write(b^, size);
+  fs.Free;
   m:=tmemorystream.create;
   m.WriteBuffer(b^, size);
   m.position:=0;

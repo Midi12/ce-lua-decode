@@ -10,8 +10,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ceemul"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="135"/>
-        <CursorPos X="20" Y="164"/>
+        <TopLine Value="137"/>
+        <CursorPos X="20" Y="148"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -45,7 +45,7 @@
         <Loaded Value="True"/>
       </Unit4>
     </Units>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="ce_emul.pas"/>
         <Caret Line="32" Column="36" TopLine="17"/>
@@ -154,6 +154,10 @@
         <Filename Value="ce_emul.pas"/>
         <Caret Line="107" TopLine="105"/>
       </Position27>
+      <Position28>
+        <Filename Value="ce_emul.pas"/>
+        <Caret Line="129" Column="54" TopLine="119"/>
+      </Position28>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
