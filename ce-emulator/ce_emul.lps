@@ -4,19 +4,48 @@
     <PathDelim Value="\"/>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="1">
+    <Units Count="5">
       <Unit0>
         <Filename Value="ce_emul.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ceemul"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="101"/>
-        <CursorPos X="16" Y="132"/>
+        <TopLine Value="135"/>
+        <CursorPos X="20" Y="164"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit0>
+      <Unit1>
+        <Filename Value="..\..\..\..\Hacks\IDA\UC\decompressed.rc"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\..\..\..\Hacks\IDA\UC\decompressed.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="C:\Users\vollrahm\AppData\Local\Temp\Rar$DIa1592.32748\FmConvertU.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="56"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="unit1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit1"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="9" Y="21"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit4>
     </Units>
-    <JumpHistory Count="23" HistoryIndex="22">
+    <JumpHistory Count="27" HistoryIndex="26">
       <Position1>
         <Filename Value="ce_emul.pas"/>
         <Caret Line="32" Column="36" TopLine="17"/>
@@ -109,6 +138,22 @@
         <Filename Value="ce_emul.pas"/>
         <Caret Line="100" Column="5" TopLine="67"/>
       </Position23>
+      <Position24>
+        <Filename Value="ce_emul.pas"/>
+        <Caret Line="178" Column="43" TopLine="154"/>
+      </Position24>
+      <Position25>
+        <Filename Value="ce_emul.pas"/>
+        <Caret Line="116" Column="25" TopLine="98"/>
+      </Position25>
+      <Position26>
+        <Filename Value="ce_emul.pas"/>
+        <Caret Line="145" Column="29" TopLine="126"/>
+      </Position26>
+      <Position27>
+        <Filename Value="ce_emul.pas"/>
+        <Caret Line="107" TopLine="105"/>
+      </Position27>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

@@ -111,6 +111,7 @@ var
   ErrorMsg: String;
   var s: string;
       tfIn: TextFile;
+      inputFile:string;
   b: pchar;
   m: TMemorystream;
   dc: Tdecompressionstream;
@@ -121,16 +122,48 @@ var
   wasActive: boolean;
 
   useascii85: boolean;
+  fs : TFileStream;
 begin
   // quick check parameters
-  writeln('hello fucking world!');
-  AssignFile(tfIn, 'trainer.txt');
+
+  writeln('ce emulator by vollragm made in pascal >:(');
+  inputFile := paramStr(1);
+  AssignFile(tfIn, inputFile);
   reset(tfIn);
   while not eof(tfIn) do
     begin
       readln(tfIn, s);
-      writeln(s);
+
     end;
+
+  writeln('read textfile');
+
+  useascii85:=true;
+
+  size:=(length(s) div 5)*4+(length(s) mod 5);
+  getmem(b, size);
+  size:=Base85ToBin(pchar(s), b);
+
+
+  m:=tmemorystream.create;
+  m.WriteBuffer(b^, size);
+  m.position:=0;
+  dc:=Tdecompressionstream.create(m, true);
+
+  dc.read(realsize,sizeof(realsize));
+
+  writeln('realsize:');
+  writeln(realsize);
+
+  FreeMemAndNil(b);
+  getmem(b, realsize);
+
+  read:=dc.read(b^, realsize);
+
+  fs:=TFileStream.Create('trainerform.dfm', fmCreate);
+  fs.Write(b^, read);
+  fs.Free;
+  writeln('press any key to exit...');
   readln();
   { add your program here }
 
