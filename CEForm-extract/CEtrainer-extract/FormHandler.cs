@@ -7,53 +7,51 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace CEForm_extract
+namespace CEtrainer_extract
 {
-    class Program
+    public static class FormHandler
     {
-        static void Main(string[] args)
+        public static void DecompressForms(string path)
         {
-             Log.Critical("CEForm-extract by VollRagm");
+            try
+            {
+                var xml = XDocument.Load(path);
+                var forms = xml.Descendants().First().Descendants().First().Descendants();
+                Console.WriteLine();
 
-             if (args.Length <= 0) Log.Fatal("Please provide the extract CETrainer XML!");
+                foreach (var form in forms)
+                {
+                    if (form.Attribute("Encoding").Value.Contains("85"))
+                    {
+                        DecompressForm(form.Name.ToString(), form.Value.ToString());
+                        Log.Info($"Decompressed {form.Name} -> {form.Name}.dfm");
+                    }
+                    else
+                        Log.Error($"Form {form} is not encoded with Ascii85, this is not supported yet.");
+                }
 
-             try
-             {
-                 var xml = XDocument.Load(args[0]);
-                 var forms = xml.Descendants().First().Descendants().First().Descendants();
-                 Console.WriteLine();
-
-                 foreach (var form in forms)
-                 {
-                     if (form.Attribute("Encoding").Value.Contains("85"))
-                     {
-                         DecompressForm(form.Name.ToString(), form.Value.ToString());
-                         Log.Info($"Decompressed {form.Name} -> {form.Name}.dfm");
-                     }
-                     else
-                         Log.Error($"Form {form} is not encoded with Ascii85, this is not supported yet.");
-                 }
-
-                 Console.WriteLine();
-                 Log.Critical("Done.");
-                 Console.ReadLine();
-             }
-             catch
-             {
-                 Log.Fatal("Could not parse XML document.");
-             }
+                Console.WriteLine();
+                Log.Critical("Forms decompressed.");
+                Console.WriteLine();
+            }
+            catch
+            {
+                Log.Fatal("Could not parse XML document.");
+            }
         }
 
-        public static void DecompressForm(string formName, string content)
+
+        private static void DecompressForm(string formName, string content)
         {
             char[] b = new char[0];
             int size = 0;
 
             try
             {
+
                 size = (content.Length / 5) * 4 + (content.Length % 5);
                 b = new char[size * 2];
-                size = (int)Base85ToBinForms(content.ToCharArray(), ref b);
+                size = (int)Base85ToBin(content.ToCharArray(), ref b);
                 byte[] buffer = b.Select(c => (byte)c).ToArray();
 
                 File.WriteAllBytes(formName + ".dfm", Decompress(buffer));
@@ -64,10 +62,7 @@ namespace CEForm_extract
             }
         }
 
-
-
-
-        public static byte[] Decompress(byte[] data)
+        private static byte[] Decompress(byte[] data)
         {
             byte[] decompressedArray = null;
             using (MemoryStream decompressedStream = new MemoryStream())
@@ -92,7 +87,7 @@ namespace CEForm_extract
                 "!#$%()*+,-./:;=?@[]^_{}";
 
         // this is darkbytes weird pascal code in C#, somehow this only works for forms
-        public static long Base85ToBinForms(char[] inputStringBase85, ref char[] BinValue)
+        private static long Base85ToBin(char[] inputStringBase85, ref char[] BinValue)
         {
             int i, j;
             int size;
@@ -163,6 +158,7 @@ namespace CEForm_extract
             }
 
             return j;
+
         }
     }
 }

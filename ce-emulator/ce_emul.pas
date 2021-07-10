@@ -127,7 +127,7 @@ begin
   // quick check parameters
 
   writeln('ce emulator by vollragm made in pascal >:(');
-  inputFile := paramStr(1);
+  inputFile := 'trainer.txt';
   AssignFile(tfIn, inputFile);
   reset(tfIn);
   while not eof(tfIn) do
@@ -141,7 +141,7 @@ begin
   useascii85:=true;
 
   size:=(length(s) div 5)*4+(length(s) mod 5);
-  getmem(b, size);
+  getmem(b, size * 2);
   size:=Base85ToBin(pchar(s), b);
 
    fs:=TFileStream.Create('compressed.bin', fmCreate);
